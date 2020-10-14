@@ -25,3 +25,29 @@ module.exports.inserirCandidatura = function (req,res){
         }
     )
 }
+
+module.exports.inserirCandidatura = function (req,res){
+    var promise = candidatura.create(req.body)
+    promise.then(
+        function(candidatura){
+            res.status(201).json(candidatura);
+        }
+    ).catch(
+        function(erro){
+            res.status(500).json(erro);
+        }
+    )
+}
+
+module.exports.update = function(req,res){
+    var promise = candidatura.findByIdAndUpdate(req.params.id, req.body)
+    promise.then(
+        function(candidatura){
+            res.status(200).json(candidatura)
+        }
+    ).catch(
+        function(erro){
+            res.status(500).json(erro);
+        }
+    )
+}

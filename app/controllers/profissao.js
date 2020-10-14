@@ -1,7 +1,7 @@
 const profissoes = require("../models/profissao")();
 
 module.exports.listaProfissoes = function (req, res) {
-    var promise = profissoes.find().exec();
+    var promise = profissoes.find().sort('nome').exec();
     promise.then(
         function (profissao) {
             res.status(200).json(profissao);

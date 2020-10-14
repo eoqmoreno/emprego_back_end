@@ -1,7 +1,7 @@
 const habilidades = require('../models/habilidade')();
 
 module.exports.listaHabilidades= function (req, res) {
-    var promise = habilidades.find().exec();
+    var promise = habilidades.find().sort('nome').exec();
     promise.then(
         function (habilidade) {
             res.status(200).json(habilidade);
